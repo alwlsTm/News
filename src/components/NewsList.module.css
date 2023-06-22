@@ -1,0 +1,44 @@
+.NewsList {
+  list-style: none;
+  padding: 0px;
+}
+
+.NewsList:not(:last-child) {
+  border-bottom: 1px solid #c5c5c5;
+}
+
+.NewsItem {
+  display: flex;
+  align-items: center;
+  padding: 25px 0px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.content {
+  margin-left: 20px;
+}
+
+.title,
+.description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.title {
+  -webkit-line-clamp: 1;
+  margin: 0px;
+}
+
+.description {
+  -webkit-line-clamp: 2;
+  margin: 10px 0 0 0;
+  color: #5f5f5f;
+}
+
+.Image {
+  flex: none;
+  height: 80px;
+  width: 120px;
+  object-fit: cover;
+}

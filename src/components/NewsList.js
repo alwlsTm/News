@@ -1,13 +1,17 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import styles from './NewsList.module.css';
 
 function NewsItem({ article }) {
-  const { title, description } = article;
+  const { title, description, urlToImage } = article;
 
   return (
-    <div>
-      <h3>{title}</h3>
-      <p>{description}</p>
+    <div className={styles.NewsItem}>
+      <img className={styles.Image} src={urlToImage} alt="사진"></img>
+      <div className={styles.content}>
+        <h3 className={styles.title}>{title}</h3>
+        <p className={styles.description}>{description}</p>
+      </div>
     </div>
   );
 }
@@ -25,7 +29,7 @@ function NewsList() {
   }, []);
 
   return (
-    <ul>
+    <ul className={styles.NewsList}>
       {articles.map((article) => {
         return (
           <li key={article.title}>
