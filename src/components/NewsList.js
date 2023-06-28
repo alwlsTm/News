@@ -21,7 +21,9 @@ function NewsList() {
 
   useEffect(() => {
     const getArticles = async () => {
-      const response = await axios.get('https://newsapi.org/v2/top-headlines?country=kr&apiKey=5c95bcf4e770493282e390b31b3fbb07');
+      const response = await axios.get(
+        'https://newsapi.org/v2/top-headlines?country=kr&apiKey=5c95bcf4e770493282e390b31b3fbb07'
+      );
       console.log(response.data.articles);
       setArticles(response.data.articles);
     }

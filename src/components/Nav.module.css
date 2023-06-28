@@ -1,0 +1,19 @@
+.Nav {
+  display: flex;
+  padding: 18px 0px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.category {
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.category:hover {
+  color: #2c73e7;
+}
+
+.Nav :not(:first-child) {
+  margin-left: 20px;
+}

@@ -1,6 +1,7 @@
 .NewsList {
   list-style: none;
   padding: 0px;
+  margin: 0px;
 }
 
 .NewsList:not(:last-child) {
