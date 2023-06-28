@@ -7,13 +7,13 @@ import Nav from './components/Nav';
 function App() {
   const [category, setCategory] = useState("all");  //카테고리 state
   const onSelect = useCallback((category) => setCategory(category), []);
-  console.log(category);
+  // console.log(category);
 
   return (
     <div className={styles.App}>
       <Header />
-      <Nav onSelect={onSelect} />
-      <NewsList />
+      <Nav category={category} onSelect={onSelect} />
+      <NewsList category={category} />
     </div>
   );
 }

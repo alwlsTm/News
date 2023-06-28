@@ -31,14 +31,14 @@ const categories = [
   },
 ];
 
-function Nav({ onSelect }) {
+function Nav({ category, onSelect }) {
   return (
     <div className={styles.Nav}>
       {categories.map((item) => {
         return (
           <div
             key={item.name}
-            className={styles.category}
+            className={category === item.name ? styles.active : styles.category}
             onClick={() => onSelect(item.name)}>
             {item.text}
           </div>

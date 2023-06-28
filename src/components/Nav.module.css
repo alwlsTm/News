@@ -4,13 +4,14 @@
   border-bottom: 1px solid #e0e0e0;
 }
 
-.category {
+.category,
+.active {
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
 }
 
-.category:hover {
+.active {
   color: #2c73e7;
 }
 
