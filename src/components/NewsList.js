@@ -1,13 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import styles from './NewsList.module.css';
+import logo from '../img/logo.jpg';
 
 function NewsItem({ article }) {
   const { title, description, urlToImage } = article;
 
   return (
     <div className={styles.NewsItem}>
-      <img className={styles.Image} src={urlToImage} alt="사진"></img>
+      <img className={styles.Image} referrerPolicy="no-referrer" src={urlToImage || logo} alt="사진"></img>
       <div className={styles.content}>
         <h3 className={styles.title}>{title}</h3>
         <p className={styles.description}>{description}</p>
@@ -29,7 +30,7 @@ function NewsList({ category }) {
         '&apiKey=5c95bcf4e770493282e390b31b3fbb07'
       );
       setArticles(response.data.articles);
-      // console.log(response.data.articles);
+      console.log(response.data.articles);
     }
     getArticles();
   }, [query]);  //카테고리 변경 시 리렌더링
