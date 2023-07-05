@@ -43,3 +43,12 @@
   width: 120px;
   object-fit: cover;
 }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

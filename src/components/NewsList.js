@@ -4,13 +4,22 @@ import styles from './NewsList.module.css';
 import logo from '../img/logo.jpg';
 
 function NewsItem({ article }) {
-  const { title, description, urlToImage } = article;
+  const { title, description, url, urlToImage } = article;
 
   return (
     <div className={styles.NewsItem}>
-      <img className={styles.Image} referrerPolicy="no-referrer" src={urlToImage || logo} alt="사진"></img>
+      <a href={url} target="_blank" rel="noopener noreferrer">
+        <img
+          className={styles.Image}
+          referrerPolicy="no-referrer"
+          src={urlToImage || logo}
+          alt="사진">
+        </img>
+      </a>
       <div className={styles.content}>
-        <h3 className={styles.title}>{title}</h3>
+        <a href={url} target="_blank" rel="noopener noreferrer">
+          <h3 className={styles.title}>{title}</h3>
+        </a>
         <p className={styles.description}>{description}</p>
       </div>
     </div>
