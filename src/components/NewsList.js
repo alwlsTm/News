@@ -26,23 +26,25 @@ function NewsItem({ article }) {
   );
 }
 
-function NewsList({ category }) {
+function NewsList({ category, keyword }) {
   const [articles, setArticles] = useState([]);  //뉴스 기사 state
-  const query = category === "all" ? "" : `&category=${category}`;  //ex) &category=healty
+  const qKeyword = keyword === null ? "" : `q=${keyword}&`;  //ex) &q=여름
+  const qCategory = category === "all" ? "" : `&category=${category}`;  //ex) &category=healty
 
   useEffect(() => {
     const getArticles = async () => {
       const response = await axios.get(
         'https://newsapi.org/v2/top-headlines?' +
+        `${qKeyword}` +
         'country=kr' +
-        `${query}` +
+        `${qCategory}` +
         '&apiKey=5c95bcf4e770493282e390b31b3fbb07'
       );
       setArticles(response.data.articles);
       console.log(response.data.articles);
     }
     getArticles();
-  }, [query]);  //카테고리 변경 시 리렌더링
+  }, [qKeyword, qCategory]);  //키워드, 카테고리 변경 시 리렌더링
 
   return (
     <ul className={styles.NewsList}>
