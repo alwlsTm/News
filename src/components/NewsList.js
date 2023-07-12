@@ -28,7 +28,7 @@ function NewsItem({ article }) {
 
 function NewsList({ category, keyword }) {
   const [articles, setArticles] = useState([]);  //뉴스 기사 state
-  const qKeyword = keyword === null ? "" : `q=${keyword}&`;  //ex) &q=여름
+  const qKeyword = keyword === null ? "" : `q=${keyword}&`;  //ex) q=여름&
   const qCategory = category === "all" ? "" : `&category=${category}`;  //ex) &category=healty
 
   useEffect(() => {

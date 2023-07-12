@@ -10,3 +10,38 @@
   height: 60px;
   align-self: center;
 }
+
+.search {
+  position: relative;
+  display: inline-flex;
+  align-self: self-end;
+  margin-bottom: 5px;
+}
+
+.searchBar {
+  width: 190px;
+  height: 25px;
+  padding: 1px 1px 1px 5px;
+  border: 1.5px solid #b7b7b7;
+  border-radius: 4px;
+}
+
+.searchBar:focus {
+  outline: none;
+}
+
+.submit {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 20px;
+  height: 20px;
+  padding: 0px;
+  border: none;
+  cursor: pointer;
+  background-color: inherit;
+}
+
+.submitImg {
+  height: inherit;
+}
