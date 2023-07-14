@@ -3,3 +3,9 @@
   max-width: 1000px;
   margin: 0 auto;
 }
+
+.date {
+  margin: 15px 0 0 2px;
+  margin-bottom: 0px;
+  font-weight: bold;
+}
