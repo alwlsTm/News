@@ -4,10 +4,6 @@
   margin: 0px;
 }
 
-.NewsList:not(:last-child) {
-  border-bottom: 1px solid #c5c5c5;
-}
-
 .NewsItem {
   display: flex;
   align-items: center;

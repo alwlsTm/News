@@ -5,6 +5,11 @@
 }
 
 .date {
+  padding-bottom: 18px;
+  border-bottom: 1.5px solid #e0e0e0;
+}
+
+.today {
   margin: 15px 0 0 2px;
   margin-bottom: 0px;
   font-weight: bold;

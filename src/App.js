@@ -13,20 +13,31 @@ function getToday() {
 function App() {
   const [category, setCategory] = useState("all");  //카테고리 state
   const [keyword, setKeyword] = useState("");       //검색 키워드 state
+  const [locale, setLocale] = useState("kr");       //locale state
 
   const onSelect = useCallback((category) => setCategory(category), []);
   // console.log(category);
 
-  const onChange = (e) => setKeyword(e.target.value);
-
+  const onChangeKeyword = (e) => setKeyword(e.target.value);
   const onSubmit = (e) => e.preventDefault();
+
+  const onChangeLocale = (e) => setLocale(e.target.value);
+  // console.log(locale);
 
   return (
     <div className={styles.App}>
-      <Header keyword={keyword} onChange={onChange} onSubmit={onSubmit} />
+      <Header
+        keyword={keyword}
+        locale={locale}
+        onChangeKeyword={onChangeKeyword}
+        onChangeLocale={onChangeLocale}
+        onSubmit={onSubmit}>
+      </Header>
       <Nav category={category} onSelect={onSelect} />
-      <div><p className={styles.date}>{getToday()}</p></div>
-      <NewsList category={category} keyword={keyword} />
+      <div className={styles.date}>
+        <p className={styles.today}>{getToday()}</p>
+      </div>
+      <NewsList category={category} keyword={keyword} locale={locale} />
     </div>
   );
 }
