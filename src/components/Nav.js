@@ -31,16 +31,19 @@ const categories = [
   },
 ];
 
-function Nav({ category, onSelect }) {
+function Nav({ category, onSelect, locale }) {
   return (
     <div className={styles.Nav}>
       {categories.map((item) => {
+        const text = locale === "kr" ? item.text : item.name;
+
         return (
           <div
             key={item.name}
             className={category === item.name ? styles.active : styles.category}
-            onClick={() => onSelect(item.name)}>
-            {item.text}
+            onClick={() => onSelect(item.name)}
+          >
+            {text}
           </div>
         )
       })}

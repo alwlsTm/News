@@ -4,10 +4,15 @@ import NewsList from './components/NewsList';
 import styles from './App.module.css';
 import Nav from './components/Nav';
 
-function getToday() {
+function getToday(locale) { // kr/us 날짜 함수
   const today = new Date();
-  const week = ['일', '월', '화', '수', '목', '금', '토'];
-  return `${today.getMonth() + 1} / ${today.getDate()} (${week[today.getDay()]})`;
+  const localeDate = locale === "kr" ? "ko-KR" : "en-us";
+  const date = today.toLocaleDateString(`${localeDate}`, {
+    month: '2-digit',
+    day: '2-digit',
+    weekday: 'short',
+  });
+  return date;
 }
 
 function App() {
@@ -16,13 +21,11 @@ function App() {
   const [locale, setLocale] = useState("kr");       //locale state
 
   const onSelect = useCallback((category) => setCategory(category), []);
-  // console.log(category);
 
   const onChangeKeyword = (e) => setKeyword(e.target.value);
   const onSubmit = (e) => e.preventDefault();
 
   const onChangeLocale = (e) => setLocale(e.target.value);
-  // console.log(locale);
 
   return (
     <div className={styles.App}>
@@ -33,9 +36,9 @@ function App() {
         onChangeLocale={onChangeLocale}
         onSubmit={onSubmit}>
       </Header>
-      <Nav category={category} onSelect={onSelect} />
+      <Nav category={category} onSelect={onSelect} locale={locale} />
       <div className={styles.date}>
-        <p className={styles.today}>{getToday()}</p>
+        <p className={styles.today}>{getToday(locale)}</p>
       </div>
       <NewsList category={category} keyword={keyword} locale={locale} />
     </div>
