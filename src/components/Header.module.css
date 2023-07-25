@@ -6,16 +6,28 @@
   border-bottom: 1.5px solid #e0e0e0;
 }
 
+.logoSelect {
+  display: flex;
+}
+
 .logo {
   height: 60px;
   align-self: center;
 }
 
+.LocaleSelect,
+.search {
+  align-self: self-end;
+  margin-bottom: 5px;
+}
+
+.LocaleSelect {
+  margin-left: 15px;
+}
+
 .search {
   position: relative;
   display: inline-flex;
-  align-self: self-end;
-  margin-bottom: 5px;
 }
 
 .searchBar {
