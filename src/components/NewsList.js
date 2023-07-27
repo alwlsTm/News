@@ -39,10 +39,11 @@ function NewsList({ category, keyword, locale }) {
         `${qLocale}` +
         `${qCategory}` +
         `${qKeyword}` +
+        'pageSize=50&' +
         'apiKey=5c95bcf4e770493282e390b31b3fbb07'
       );
       setArticles(response.data.articles);
-      // console.log(response.data.articles);
+      console.log(response.data.articles);
     }
     getArticles();
   }, [qLocale, qCategory, qKeyword]);  //국가, 카테고리, 키워드 변경 시 리렌더링
