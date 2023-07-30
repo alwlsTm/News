@@ -16,7 +16,7 @@
 }
 
 .LocaleSelect,
-.search {
+.form {
   align-self: self-end;
   margin-bottom: 5px;
 }
@@ -25,35 +25,48 @@
   margin-left: 15px;
 }
 
-.search {
+.form {
   position: relative;
   display: inline-flex;
+  height: 35px;
 }
 
-.searchBar {
-  width: 190px;
-  height: 25px;
-  padding: 1px 1px 1px 5px;
+.form input {
+  padding: 6px 65px 5px 8px;
   border: 1.5px solid #b7b7b7;
   border-radius: 4px;
 }
 
-.searchBar:focus {
+.form input:focus {
   outline: none;
 }
 
-.submit {
+.form button,
+.form button[type="submit"] {
   position: absolute;
-  top: 5px;
-  right: 5px;
-  width: 20px;
-  height: 20px;
   padding: 0px;
   border: none;
   cursor: pointer;
+  height: inherit;
   background-color: inherit;
 }
 
-.submitImg {
-  height: inherit;
+.form button {
+  padding: 9px 8px 7px 8px;
+  right: 39px;
+  color: #b7b7b7;
+}
+
+.form button:disabled {
+  color: #fff;
+}
+
+.form button[type="submit"] {
+  padding: 6px 8px;
+  right: 0px;
+}
+
+.form button[type="submit"] img {
+  width: 23px;
+  height: 23px;
 }

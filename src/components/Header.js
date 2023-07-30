@@ -1,9 +1,9 @@
+import LocaleSelect from './LocaleSelect';
 import styles from './Header.module.css';
 import logo from '../img/logo.jpg';
 import search from '../img/search.png';
-import LocaleSelect from './LocaleSelect';
 
-function Header({ keyword, locale, onChangeKeyword, onChangeLocale, onSubmit }) {
+function Header({ keyword, locale, onChangeKeyword, onChangeLocale, onClick, onSubmit }) {
   return (
     <div className={styles.Header}>
       <div className={styles.logoSelect}>
@@ -12,16 +12,16 @@ function Header({ keyword, locale, onChangeKeyword, onChangeLocale, onSubmit }) 
           <LocaleSelect locale={locale} onChange={onChangeLocale} />
         </div>
       </div>
-      <form className={styles.search} onSubmit={onSubmit}>
+      <form className={styles.form} onSubmit={onSubmit}>
         <input
-          className={styles.searchBar}
           type="text"
           value={keyword}
           placeholder={locale === "kr" ? '뉴스 검색' : 'Search News'}
           onChange={onChangeKeyword}>
         </input>
-        <button className={styles.submit} type='submit'>
-          <img className={styles.submitImg} src={search} alt='검색'></img>
+        <button onClick={onClick} disabled={!keyword}>X</button>
+        <button type='submit'>
+          <img src={search} alt='검색'></img>
         </button>
       </form>
     </div>

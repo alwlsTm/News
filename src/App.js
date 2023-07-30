@@ -23,6 +23,7 @@ function App() {
   const onSelect = useCallback((category) => setCategory(category), []);
 
   const onChangeKeyword = (e) => setKeyword(e.target.value);
+  const onClearClick = () => setKeyword("");
   const onSubmit = (e) => e.preventDefault();
 
   const onChangeLocale = (e) => setLocale(e.target.value);
@@ -34,6 +35,7 @@ function App() {
         locale={locale}
         onChangeKeyword={onChangeKeyword}
         onChangeLocale={onChangeLocale}
+        onClick={onClearClick}
         onSubmit={onSubmit}>
       </Header>
       <Nav category={category} onSelect={onSelect} locale={locale} />

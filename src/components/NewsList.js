@@ -43,7 +43,6 @@ function NewsList({ category, keyword, locale }) {
         'apiKey=5c95bcf4e770493282e390b31b3fbb07'
       );
       setArticles(response.data.articles);
-      console.log(response.data.articles);
     }
     getArticles();
   }, [qLocale, qCategory, qKeyword]);  //국가, 카테고리, 키워드 변경 시 리렌더링
@@ -62,17 +61,3 @@ function NewsList({ category, keyword, locale }) {
 }
 
 export default NewsList;
-
-/*
-▼0: 
-  author: "강동일"
-  content: "<ol><li></li><li></li><li></li><li></li><li></li></ol><ol><li></li><li></li><li></li><li></li><li></li></ol><ol><li></li><li></li><li></li><li></li><li></li></ol><ol><li></li><li></li><li></li><li></… [+203 chars]"
-  description: "【 앵커멘트 】 오늘 광주와 담양에 올해 첫 폭염주의보가 내려졌습니다.  아직 6월 중순인데 본격적인 여름을 알리는 폭염이 찾아왔습니다.   이번 불"
-  publishedAt: "2023-06-17T12:09:06Z"
-  source: 
-    id: null
-    name: "Ikbc.co.kr"
-  title: "광주와 담양 올해 첫 폭염주의보..불볕더위 기승 - KBC광주방송"
-  url: "http://www.ikbc.co.kr/article/view/kbc202306170021"
-  urlToImage: "http://www.ikbc.co.kr/data/kbc/image/2023/06/17/kbc202306170061.jpg"
-*/
