@@ -1,0 +1,22 @@
+.button,
+.active {
+  padding: 8px 15px;
+  border: 1px solid #e0e0e0;
+  font-size: 17px;
+  font-weight: 500;
+  background-color: inherit;
+}
+
+.button {
+  cursor: pointer;
+}
+
+.active,
+.button:hover {
+  color: #2c73e7;
+}
+
+.button:not(:first-child),
+.active:not(:first-child) {
+  margin-left: 10px;
+}

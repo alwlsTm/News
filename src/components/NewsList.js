@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Pagination from "./Pagination";
 import styles from './NewsList.module.css';
 import logo from '../img/logo.jpg';
-import Pagination from "./Pagination";
 
 function NewsItem({ article }) {
   const { title, description, url, urlToImage } = article;
@@ -54,7 +54,7 @@ function NewsList({ category, keyword, locale }) {
   }, [qLocale, qCategory, qKeyword]);  //국가, 카테고리, 키워드 변경 시 리렌더링
 
   return (
-    <div>
+    <>
       <ul className={styles.NewsList}>
         {articles.slice(offset, offset + limit)
           .map((article) => {
@@ -65,13 +65,15 @@ function NewsList({ category, keyword, locale }) {
             )
           })}
       </ul>
-      <Pagination
-        total={articles.length}
-        limit={limit}
-        page={page}
-        setPage={setPage}
-      />
-    </div>
+      <div className={styles.Pagination}>
+        <Pagination
+          total={articles.length}
+          limit={limit}
+          page={page}
+          setPage={setPage}
+        />
+      </div>
+    </>
   );
 }
 
