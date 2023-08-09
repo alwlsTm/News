@@ -51,6 +51,7 @@ function NewsList({ category, keyword, locale }) {
       console.log(response.data.articles);
     }
     getArticles();
+    setPage(1);   //페이지 초기화
   }, [qLocale, qCategory, qKeyword]);  //국가, 카테고리, 키워드 변경 시 리렌더링
 
   return (
@@ -65,14 +66,19 @@ function NewsList({ category, keyword, locale }) {
             )
           })}
       </ul>
-      <div className={styles.Pagination}>
-        <Pagination
-          total={articles.length}
-          limit={limit}
-          page={page}
-          setPage={setPage}
-        />
-      </div>
+      {articles.length > 20 ? (
+        <div className={styles.Pagination}>
+          <Pagination
+            total={articles.length}
+            limit={limit}
+            page={page}
+            setPage={setPage}
+          />
+        </div>
+      ) : (
+        <div className={styles.Pagination}>
+        </div>
+      )}
     </>
   );
 }

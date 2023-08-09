@@ -10,7 +10,10 @@ function Pagination({ total, limit, page, setPage }) {
           <button
             className={page === idx + 1 ? styles.active : styles.button}
             key={idx + 1}
-            onClick={() => setPage(idx + 1)}
+            onClick={() => {
+              setPage(idx + 1)
+              window.scrollTo(0, 0)
+            }}
           >
             {idx + 1}
           </button>
