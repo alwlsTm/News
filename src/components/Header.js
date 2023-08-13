@@ -6,7 +6,7 @@ import search from '../img/search.png';
 function Header({ keyword, locale, onChangeKeyword, onChangeLocale, onClick, onSubmit }) {
   return (
     <div className={styles.Header}>
-      <div className={styles.logoSelect}>
+      <div className={styles.logo_select}>
         <img className={styles.logo} src={logo} alt="News"></img>
         <div className={styles.LocaleSelect}>
           <LocaleSelect locale={locale} onChange={onChangeLocale} />

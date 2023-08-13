@@ -11,7 +11,6 @@ function NewsItem({ article }) {
     <div className={styles.NewsItem}>
       <a href={url} target="_blank" rel="noopener noreferrer">
         <img
-          className={styles.Image}
           referrerPolicy="no-referrer"
           src={urlToImage || logo}
           alt="사진">
@@ -19,7 +18,7 @@ function NewsItem({ article }) {
       </a>
       <div className={styles.content}>
         <a href={url} target="_blank" rel="noopener noreferrer">
-          <h3 className={styles.title}>{title}</h3>
+          <h4 className={styles.title}>{title}</h4>
         </a>
         <p className={styles.description}>{description}</p>
       </div>

@@ -1,16 +1,22 @@
+body {
+  margin: 0px;
+}
+
 .App {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
 }
 
 .date {
-  padding-bottom: 18px;
   border-bottom: 1.5px solid #e0e0e0;
 }
 
 .today {
-  margin: 15px 0 0 2px;
-  margin-bottom: 0px;
-  font-weight: bold;
+  padding: 16px 0 16px 4px;
+  margin: 0px;
+  font-size: 15px;
+  font-weight: 600;
 }
