@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import Header from './components/Header';
 import NewsList from './components/NewsList';
 import styles from './App.module.css';
@@ -16,11 +16,8 @@ function getToday(locale) { // kr/us 날짜 함수
 }
 
 function App() {
-  const [category, setCategory] = useState("all");  //카테고리 state
   const [keyword, setKeyword] = useState("");       //검색 키워드 state
   const [locale, setLocale] = useState("kr");       //locale state
-
-  const onSelect = useCallback((category) => setCategory(category), []);
 
   const onChangeKeyword = (e) => setKeyword(e.target.value);
   const onClearClick = () => setKeyword("");
@@ -38,11 +35,11 @@ function App() {
         onClick={onClearClick}
         onSubmit={onSubmit}>
       </Header>
-      <Nav category={category} onSelect={onSelect} locale={locale} />
+      <Nav locale={locale} />
       <div className={styles.date}>
         <p className={styles.today}>{getToday(locale)}</p>
       </div>
-      <NewsList category={category} keyword={keyword} locale={locale} />
+      <NewsList keyword={keyword} locale={locale} />
     </div>
   );
 }

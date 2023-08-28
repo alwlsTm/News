@@ -1,3 +1,5 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { setCategory } from '../store/categorySlice';
 import styles from './Nav.module.css';
 
 const categories = [
@@ -31,7 +33,10 @@ const categories = [
   },
 ];
 
-function Nav({ category, onSelect, locale }) {
+function Nav({ locale }) {
+  const dispatch = useDispatch();
+  const category = useSelector((state) => state.category);  //카테고리 state
+
   return (
     <div className={styles.Nav}>
       {categories.map((item) => {
@@ -40,8 +45,8 @@ function Nav({ category, onSelect, locale }) {
         return (
           <div
             key={item.name}
-            className={category === item.name ? styles.active : styles.category}
-            onClick={() => onSelect(item.name)}
+            className={category.value === item.name ? styles.active : styles.category}
+            onClick={() => dispatch(setCategory(item.name))}
           >
             {text}
           </div>
