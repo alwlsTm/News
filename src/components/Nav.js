@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { setCategory } from '../store/categorySlice';
+import { setCategory } from '../store/slices/categorySlice';
 import styles from './Nav.module.css';
 
 const categories = [

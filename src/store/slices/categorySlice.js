@@ -6,7 +6,7 @@ const categorySlice = createSlice({
   reducers: {
     setCategory: (state, action) => {
       state.value = action.payload;
-      // console.log(action);  //{type: 'category/setCategory', payload: 'business'}
+      //{type: 'category/setCategory', payload: 'business'}
     },
   },
 });
