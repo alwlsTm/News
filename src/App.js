@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import Header from './components/Header';
 import NewsList from './components/NewsList';
-import styles from './App.module.css';
 import Nav from './components/Nav';
+import styles from './App.module.css';
 
 function getToday(locale) { // kr/us 날짜 함수
   const today = new Date();
@@ -16,30 +16,21 @@ function getToday(locale) { // kr/us 날짜 함수
 }
 
 function App() {
-  const [keyword, setKeyword] = useState("");       //검색 키워드 state
-  const [locale, setLocale] = useState("kr");       //locale state
-
-  const onChangeKeyword = (e) => setKeyword(e.target.value);
-  const onClearClick = () => setKeyword("");
-  const onSubmit = (e) => e.preventDefault();
+  const [locale, setLocale] = useState("kr"); //locale state
 
   const onChangeLocale = (e) => setLocale(e.target.value);
 
   return (
     <div className={styles.App}>
       <Header
-        keyword={keyword}
         locale={locale}
-        onChangeKeyword={onChangeKeyword}
-        onChangeLocale={onChangeLocale}
-        onClick={onClearClick}
-        onSubmit={onSubmit}>
+        onChangeLocale={onChangeLocale}>
       </Header>
       <Nav locale={locale} />
       <div className={styles.date}>
         <p className={styles.today}>{getToday(locale)}</p>
       </div>
-      <NewsList keyword={keyword} locale={locale} />
+      <NewsList locale={locale} />
     </div>
   );
 }

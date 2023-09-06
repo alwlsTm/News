@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getArticle } from "../store/slices/articleSlice";
 import Pagination from "./Pagination";
 import styles from './NewsList.module.css';
 import logo from '../img/logo.jpg';
-import { getArticle } from "../store/slices/articleSlice";
 
 function NewsItem({ article }) {
   const { title, description, url, urlToImage } = article;
@@ -27,22 +27,27 @@ function NewsItem({ article }) {
   );
 }
 
-function NewsList({ keyword, locale }) {
+function NewsList({ locale }) {
   const [page, setPage] = useState(1);  //페이지 state
   const limit = 20;                     //페이지당 기사 개수
   const offset = (page - 1) * limit;    //페이지당 보여질 기사
 
   const dispatch = useDispatch();
   const articles = useSelector((state) => state.article.value);  //기사 state
-  const category = useSelector((state) => state.category);       //카테고리 state
+  const category = useSelector((state) => state.category.value); //카테고리 state
+  const keyword = useSelector((state) => state.keyword.value);   //키워드 state
 
   const qLocale = `country=${locale}&`;  //ex) country=kr
-  const qCategory = category.value === "all" ? "" : `category=${category.value}&`;  //ex) &category=healty
+  const qCategory = category === "all" ? "" : `category=${category}&`;  //ex) &category=healty
   const qKeyword = keyword === null ? "" : `q=${keyword}&`;  //ex) q=여름&
 
   useEffect(() => {
-    dispatch(getArticle(qCategory));
-  }, [dispatch, qCategory]);
+    dispatch(getArticle({
+      category: qCategory,
+      keyword: qKeyword,
+    }));
+    setPage(1); //페이지 초기화
+  }, [dispatch, qCategory, qKeyword]);  //카테고리, 키워드 변경 시 리렌더링
 
   return (
     <>
