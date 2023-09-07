@@ -5,9 +5,10 @@ import styles from './Header.module.css';
 import logo from '../img/logo.jpg';
 import search from '../img/search.png';
 
-function Header({ locale, onChangeLocale }) {
+function Header() {
   const dispatch = useDispatch();
-  const keyword = useSelector((state) => state.keyword.value);
+  const locale = useSelector((state) => state.locale.value);    //locale state
+  const keyword = useSelector((state) => state.keyword.value);  //키워드 state
   const onSubmit = (e) => e.preventDefault();
 
   return (
@@ -15,7 +16,7 @@ function Header({ locale, onChangeLocale }) {
       <div className={styles.logo_select}>
         <img className={styles.logo} src={logo} alt="News"></img>
         <div className={styles.LocaleSelect}>
-          <LocaleSelect locale={locale} onChange={onChangeLocale} />
+          <LocaleSelect />
         </div>
       </div>
       <form className={styles.form} onSubmit={onSubmit}>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Header from './components/Header';
 import NewsList from './components/NewsList';
 import Nav from './components/Nav';
@@ -16,21 +16,16 @@ function getToday(locale) { // kr/us 날짜 함수
 }
 
 function App() {
-  const [locale, setLocale] = useState("kr"); //locale state
-
-  const onChangeLocale = (e) => setLocale(e.target.value);
+  const locale = useSelector((state) => state.locale.value);
 
   return (
     <div className={styles.App}>
-      <Header
-        locale={locale}
-        onChangeLocale={onChangeLocale}>
-      </Header>
-      <Nav locale={locale} />
+      <Header />
+      <Nav />
       <div className={styles.date}>
         <p className={styles.today}>{getToday(locale)}</p>
       </div>
-      <NewsList locale={locale} />
+      <NewsList />
     </div>
   );
 }

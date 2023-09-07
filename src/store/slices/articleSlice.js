@@ -3,10 +3,10 @@ import axios from "axios";
 
 export const getArticle = createAsyncThunk(
   "article/getArticle",
-  async ({ category, keyword }) => {
+  async ({ locale, category, keyword }) => {
     const response = await axios.get(
       'https://newsapi.org/v2/top-headlines?' +
-      'country=kr&' +
+      `${locale}` +
       `${category}` +
       `${keyword}` +
       'pageSize=100&' +

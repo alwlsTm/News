@@ -33,9 +33,10 @@ const categories = [
   },
 ];
 
-function Nav({ locale }) {
+function Nav() {
   const dispatch = useDispatch();
-  const category = useSelector((state) => state.category);  //카테고리 state
+  const locale = useSelector((state) => state.locale.value);  //locale state
+  const category = useSelector((state) => state.category.value);    //카테고리 state
 
   return (
     <div className={styles.Nav}>
@@ -45,7 +46,7 @@ function Nav({ locale }) {
         return (
           <div
             key={item.name}
-            className={category.value === item.name ? styles.active : styles.category}
+            className={category === item.name ? styles.active : styles.category}
             onClick={() => dispatch(setCategory(item.name))}
           >
             {text}

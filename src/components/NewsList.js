@@ -27,13 +27,14 @@ function NewsItem({ article }) {
   );
 }
 
-function NewsList({ locale }) {
+function NewsList() {
   const [page, setPage] = useState(1);  //페이지 state
   const limit = 20;                     //페이지당 기사 개수
   const offset = (page - 1) * limit;    //페이지당 보여질 기사
 
   const dispatch = useDispatch();
   const articles = useSelector((state) => state.article.value);  //기사 state
+  const locale = useSelector((state) => state.locale.value);     //locale state
   const category = useSelector((state) => state.category.value); //카테고리 state
   const keyword = useSelector((state) => state.keyword.value);   //키워드 state
 
@@ -43,11 +44,12 @@ function NewsList({ locale }) {
 
   useEffect(() => {
     dispatch(getArticle({
+      locale: qLocale,
       category: qCategory,
       keyword: qKeyword,
     }));
     setPage(1); //페이지 초기화
-  }, [dispatch, qCategory, qKeyword]);  //카테고리, 키워드 변경 시 리렌더링
+  }, [dispatch, qLocale, qCategory, qKeyword]);  //locale, 카테고리, 키워드 변경 시 리렌더링
 
   return (
     <>
