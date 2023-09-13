@@ -4,7 +4,7 @@ import styles from './Nav.module.css';
 
 const categories = [
   {
-    name: "all",
+    name: "general",
     text: "전체",
   },
   {

@@ -38,31 +38,27 @@ function NewsList() {
   const category = useSelector((state) => state.category.value); //카테고리 state
   const keyword = useSelector((state) => state.keyword.value);   //키워드 state
 
-  const qLocale = `country=${locale}&`;  //ex) country=kr
-  const qCategory = category === "all" ? "" : `category=${category}&`;  //ex) &category=healty
-  const qKeyword = keyword === null ? "" : `q=${keyword}&`;  //ex) q=여름&
-
   useEffect(() => {
-    dispatch(getArticle({
-      locale: qLocale,
-      category: qCategory,
-      keyword: qKeyword,
-    }));
+    dispatch(getArticle({ locale, category }));
     setPage(1); //페이지 초기화
-  }, [dispatch, qLocale, qCategory, qKeyword]);  //locale, 카테고리, 키워드 변경 시 리렌더링
+  }, [dispatch, locale, category]);  //locale, 카테고리 변경 시 리렌더링
 
   return (
     <>
-      <ul className={styles.NewsList}>
-        {articles.slice(offset, offset + limit)
-          .map((article) => {
-            return (
-              <li key={article.title}>
-                <NewsItem article={article} />
-              </li>
-            )
-          })}
-      </ul>
+      {keyword && articles.length === 0 ? ( //검색 결과가 없다면
+        <div>검색결과가 없습니다.</div>
+      ) : (
+        <ul className={styles.NewsList}>
+          {articles.slice(offset, offset + limit)
+            .map((article) => {
+              return (
+                <li key={article.title}>
+                  <NewsItem article={article} />
+                </li>
+              )
+            })}
+        </ul>
+      )}
       {articles.length > 20 ? (
         <div className={styles.Pagination}>
           <Pagination

@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { getArticle } from '../store/slices/articleSlice';
 import { setKeyword } from '../store/slices/keywordSlice';
 import LocaleSelect from './LocaleSelect';
 import styles from './Header.module.css';
@@ -7,9 +8,14 @@ import search from '../img/search.png';
 
 function Header() {
   const dispatch = useDispatch();
-  const locale = useSelector((state) => state.locale.value);    //locale state
-  const keyword = useSelector((state) => state.keyword.value);  //키워드 state
-  const onSubmit = (e) => e.preventDefault();
+  const locale = useSelector((state) => state.locale.value);      //locale state
+  const category = useSelector((state) => state.category.value);  //카테고리 state
+  const keyword = useSelector((state) => state.keyword.value);    //키워드 state
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    dispatch(getArticle({ locale, category, keyword }));
+  };
 
   return (
     <div className={styles.Header}>
@@ -27,10 +33,11 @@ function Header() {
           onChange={(e) => dispatch(setKeyword(e.target.value))}>
         </input>
         <button
+          type="button"
           onClick={() => dispatch(setKeyword(""))}
           disabled={!keyword}>X
         </button>
-        <button type='submit'>
+        <button type="submit">
           <img src={search} alt='검색'></img>
         </button>
       </form>
