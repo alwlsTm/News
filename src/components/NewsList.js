@@ -4,6 +4,7 @@ import { getArticle } from "../store/slices/articleSlice";
 import Pagination from "./Pagination";
 import styles from './NewsList.module.css';
 import logo from '../img/logo.jpg';
+import NotFound from "./NotFound";
 
 function NewsItem({ article }) {
   const { title, description, url, urlToImage } = article;
@@ -39,14 +40,16 @@ function NewsList() {
   const keyword = useSelector((state) => state.keyword.value);   //키워드 state
 
   useEffect(() => {
-    dispatch(getArticle({ locale, category }));
+    if (!keyword) {
+      dispatch(getArticle({ locale, category }));
+    }
     setPage(1); //페이지 초기화
-  }, [dispatch, locale, category]);  //locale, 카테고리 변경 시 리렌더링
+  }, [dispatch, locale, category, keyword]);  //locale, 카테고리 변경 시 리렌더링
 
   return (
     <>
       {keyword && articles.length === 0 ? ( //검색 결과가 없다면
-        <div>검색결과가 없습니다.</div>
+        <NotFound />
       ) : (
         <ul className={styles.NewsList}>
           {articles.slice(offset, offset + limit)

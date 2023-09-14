@@ -1,0 +1,9 @@
+.NotFound {
+  display: flex;
+  justify-content: center;
+}
+
+.NotFound p {
+  margin: 40px 0;
+  font-weight: 600;
+}
