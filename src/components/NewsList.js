@@ -40,11 +40,10 @@ function NewsList() {
   const keyword = useSelector((state) => state.keyword.value);   //키워드 state
 
   useEffect(() => {
-    if (!keyword) {
-      dispatch(getArticle({ locale, category }));
-    }
+    dispatch(getArticle({ locale, category }));
     setPage(1); //페이지 초기화
-  }, [dispatch, locale, category, keyword]);  //locale, 카테고리 변경 시 리렌더링
+  }, [dispatch, locale, category
+  ]);  //locale, 카테고리 변경 시 리렌더링
 
   return (
     <>

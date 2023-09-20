@@ -11,7 +11,7 @@ export const getArticle = createAsyncThunk(
       'pageSize=100&' +
       'apiKey=5c95bcf4e770493282e390b31b3fbb07'
     );
-    // console.log(response.data.articles);
+    console.log(response.data.articles);
     return response.data.articles;
   }
 );
@@ -25,7 +25,8 @@ const articleSlice = createSlice({
       console.log(state, action);
     });
     builder.addCase(getArticle.fulfilled, (state, action) => {  //통신 성공
-      state.value = action.payload;
+      const article = action.payload.filter(({ title }) => title !== "[Removed]");
+      state.value = article;
     });
     builder.addCase(getArticle.rejected, (state, action) => { //통신 에러
       console.log(state, action);
