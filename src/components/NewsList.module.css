@@ -1,7 +1,7 @@
 .NewsList {
   list-style: none;
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0 auto;
 }
 
 .NewsItem {
@@ -11,13 +11,15 @@
   border-bottom: 1px solid #e0e0e0;
 }
 
-.NewsItem img {
+.urlImg,
+.urlImg img {
   height: 70px;
   width: 110px;
   object-fit: cover;
 }
 
 .content {
+  height: 70px;
   margin-left: 20px;
   align-items: center;
 }

@@ -1,55 +1,58 @@
 .Header {
   display: flex;
   height: 90px;
-  justify-content: space-between;
+  align-items: center;
   border-bottom: 1.5px solid #e0e0e0;
 }
 
-.logo_select {
+.container {
   display: flex;
+  width: 100%;
+  align-items: flex-end;
+  justify-content: space-between;
 }
 
-.logo {
+.logo_locale {
+  display: flex;
+  align-items: flex-end;
+}
+
+.logo_locale img {
   height: 60px;
-  align-self: center;
-}
-
-.LocaleSelect,
-.form {
-  align-self: self-end;
-  margin-bottom: 15px;
-}
-
-.LocaleSelect {
-  margin-left: 15px;
 }
 
 .form {
   position: relative;
   display: inline-flex;
+  width: 180px;
   height: 30px;
 }
 
 .form input {
-  padding: 5px 65px 5px 8px;
+  width: 100%;
   border: 1.5px solid #b7b7b7;
   border-radius: 4px;
+  padding: 5px 55px 5px 8px;
   outline: none;
   font-size: 13px;
 }
 
+.buttons {
+  display: flex;
+  position: absolute;
+  height: 100%;
+  right: 0;
+}
+
 .form button,
 .form button[type="submit"] {
-  position: absolute;
   border: none;
   cursor: pointer;
-  height: inherit;
+  padding: 5px 6px;
   background-color: inherit;
 }
 
 .form button {
-  padding: 8px;
-  right: 37px;
   color: #b7b7b7;
 }
 
@@ -57,12 +60,12 @@
   color: #fff;
 }
 
-.form button[type="submit"] {
-  padding: 5px 8px;
-  right: 0px;
-}
-
 .form button[type="submit"] img {
   width: 20px;
-  height: 20px;
+}
+
+@media (max-width: 768px) {
+  .form {
+    width: 150px;
+  }
 }

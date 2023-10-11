@@ -11,18 +11,24 @@ function NewsItem({ article }) {
 
   return (
     <div className={styles.NewsItem}>
-      <a href={url} target="_blank" rel="noopener noreferrer">
-        <img
-          referrerPolicy="no-referrer"
-          src={urlToImage || logo}
-          alt="사진">
-        </img>
-      </a>
+      <div className={styles.urlImg}>
+        <a href={url} target="_blank" rel="noopener noreferrer">
+          <img
+            referrerPolicy="no-referrer"
+            src={urlToImage || logo}
+            alt="사진">
+          </img>
+        </a>
+      </div>
       <div className={styles.content}>
         <a href={url} target="_blank" rel="noopener noreferrer">
-          <h4 className={styles.title}>{title}</h4>
+          <h4 className={styles.title}>
+            {title}
+          </h4>
         </a>
-        <p className={styles.description}>{description}</p>
+        <p className={styles.description}>
+          {description}
+        </p>
       </div>
     </div>
   );
@@ -42,8 +48,7 @@ function NewsList() {
   useEffect(() => {
     dispatch(getArticle({ locale, category }));
     setPage(1); //페이지 초기화
-  }, [dispatch, locale, category
-  ]);  //locale, 카테고리 변경 시 리렌더링
+  }, [dispatch, locale, category]);  //locale, 카테고리 변경 시 리렌더링
 
   return (
     <>

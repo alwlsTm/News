@@ -35,8 +35,8 @@ const categories = [
 
 function Nav() {
   const dispatch = useDispatch();
-  const locale = useSelector((state) => state.locale.value);  //locale state
-  const category = useSelector((state) => state.category.value);    //카테고리 state
+  const locale = useSelector((state) => state.locale.value);    //locale state
+  const category = useSelector((state) => state.category.value);//카테고리 state
 
   return (
     <div className={styles.Nav}>

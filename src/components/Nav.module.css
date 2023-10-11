@@ -1,13 +1,12 @@
 .Nav {
   display: flex;
-  padding: 16px 0 16px 4px;
+  padding: 16px 0;
   border-bottom: 1.5px solid #e0e0e0;
 }
 
 .category,
 .active {
-  font-size: 17px;
-  font-weight: bold;
+  font-weight: 600;
   cursor: pointer;
 }
 
@@ -17,4 +16,17 @@
 
 .Nav :not(:first-child) {
   margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+  .Nav {
+    justify-content: space-between;
+  }
+  .category,
+  .active {
+    font-size: 14px;
+  }
+  .Nav :not(:first-child) {
+    margin-left: 18px;
+  }
 }

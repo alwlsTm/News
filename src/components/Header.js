@@ -12,35 +12,37 @@ function Header() {
   const category = useSelector((state) => state.category.value);  //카테고리 state
   const keyword = useSelector((state) => state.keyword.value);    //키워드 state
 
-  const onSubmit = (e) => {
+  const onSubmit = (e) => { //검색
     e.preventDefault();
     dispatch(getArticle({ locale, category, keyword }));
   };
 
   return (
     <div className={styles.Header}>
-      <div className={styles.logo_select}>
-        <img className={styles.logo} src={logo} alt="News"></img>
-        <div className={styles.LocaleSelect}>
+      <div className={styles.container}>
+        <div className={styles.logo_locale}>
+          <img src={logo} alt="News"></img>
           <LocaleSelect />
         </div>
+        <form className={styles.form} onSubmit={onSubmit}>
+          <input
+            type="text"
+            value={keyword}
+            placeholder={locale === "kr" ? '뉴스 검색' : 'Search News'}
+            onChange={(e) => dispatch(setKeyword(e.target.value))}>
+          </input>
+          <div className={styles.buttons}>
+            <button
+              type="button"
+              onClick={() => dispatch(setKeyword(""))}
+              disabled={!keyword}
+            >X</button>
+            <button type="submit">
+              <img src={search} alt='검색'></img>
+            </button>
+          </div>
+        </form>
       </div>
-      <form className={styles.form} onSubmit={onSubmit}>
-        <input
-          type="text"
-          value={keyword}
-          placeholder={locale === "kr" ? '뉴스 검색' : 'Search News'}
-          onChange={(e) => dispatch(setKeyword(e.target.value))}>
-        </input>
-        <button
-          type="button"
-          onClick={() => dispatch(setKeyword(""))}
-          disabled={!keyword}>X
-        </button>
-        <button type="submit">
-          <img src={search} alt='검색'></img>
-        </button>
-      </form>
     </div>
   );
 }

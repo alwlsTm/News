@@ -16,7 +16,7 @@ function getToday(locale) { // kr/us 날짜 함수
 }
 
 function App() {
-  const locale = useSelector((state) => state.locale.value);
+  const locale = useSelector((state) => state.locale.value);  //locale state
 
   return (
     <div className={styles.App}>
