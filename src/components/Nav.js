@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { setCategory } from '../store/slices/categorySlice';
+import { setKeyword } from '../store/slices/keywordSlice';
 import styles from './Nav.module.css';
 
 const categories = [
@@ -33,21 +33,22 @@ const categories = [
   },
 ];
 
-function Nav() {
-  const dispatch = useDispatch();
-  const locale = useSelector((state) => state.locale.value);    //locale state
-  const category = useSelector((state) => state.category.value);//카테고리 state
+function Nav({ dispatch, locale, category, keyword }) {
+
+  const onClick = (item) => {
+    if (keyword) dispatch(setKeyword(""));
+    dispatch(setCategory(item.name));
+  }
 
   return (
     <div className={styles.Nav}>
       {categories.map((item) => {
         const text = locale === "kr" ? item.text : item.name;
-
         return (
           <div
             key={item.name}
             className={category === item.name ? styles.active : styles.category}
-            onClick={() => dispatch(setCategory(item.name))}
+            onClick={() => onClick(item)}
           >
             {text}
           </div>

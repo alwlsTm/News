@@ -1,9 +1,9 @@
-.NotFound {
+.Status {
   display: flex;
   justify-content: center;
 }
 
-.NotFound p {
+.Status p {
   margin: 40px 0;
   font-weight: 600;
 }

@@ -1,4 +1,3 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { getArticle } from '../store/slices/articleSlice';
 import { setKeyword } from '../store/slices/keywordSlice';
 import LocaleSelect from './LocaleSelect';
@@ -6,11 +5,7 @@ import styles from './Header.module.css';
 import logo from '../img/logo.jpg';
 import search from '../img/search.png';
 
-function Header() {
-  const dispatch = useDispatch();
-  const locale = useSelector((state) => state.locale.value);      //locale state
-  const category = useSelector((state) => state.category.value);  //카테고리 state
-  const keyword = useSelector((state) => state.keyword.value);    //키워드 state
+function Header({ dispatch, locale, category, keyword }) {
 
   const onSubmit = (e) => { //검색
     e.preventDefault();
@@ -36,7 +31,8 @@ function Header() {
               type="button"
               onClick={() => dispatch(setKeyword(""))}
               disabled={!keyword}
-            >X</button>
+            >&times;
+            </button>
             <button type="submit">
               <img src={search} alt='검색'></img>
             </button>

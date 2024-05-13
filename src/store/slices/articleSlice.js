@@ -11,25 +11,25 @@ export const getArticle = createAsyncThunk(
       'pageSize=100&' +
       'apiKey=5c95bcf4e770493282e390b31b3fbb07'
     );
-    console.log(response.data.articles);
     return response.data.articles;
   }
 );
 
 const articleSlice = createSlice({
   name: "article",
-  initialState: { value: [] },
+  initialState: { loading: false, articles: [] },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getArticle.pending, (state, action) => {  //통신 중
-      console.log(state, action);
+    builder.addCase(getArticle.pending, (state) => {  //통신 중
+      state.loading = true;
     });
     builder.addCase(getArticle.fulfilled, (state, action) => {  //통신 성공
+      state.loading = false;
       const article = action.payload.filter(({ title }) => title !== "[Removed]");
-      state.value = article;
+      state.articles = article;
     });
-    builder.addCase(getArticle.rejected, (state, action) => { //통신 에러
-      console.log(state, action);
+    builder.addCase(getArticle.rejected, (state) => { //통신 에러
+      state.loading = false;
     });
   },
 });
